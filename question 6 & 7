@@ -1,0 +1,9 @@
+> use exam
+ $ mongoimport --collection exam --db exam bioinf_mongo_examen.json 
+
+question 6
+
+> db.exam.find({"method_of_admission": $or {"TABLET"}, {"BUCCAL"}, {"SUBLINGUAL"}}).count()
+
+question 7
+> db.exam.aggregate($group:"$company", avg:{$avg:1}),{$sort:a{vg:-1}}])
