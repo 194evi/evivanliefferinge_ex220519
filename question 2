@@ -1,0 +1,18 @@
+UNF 
+projects( research_id, reseach_desc, research_sup, lab_code, lab_name, personel_no, personel_name, personel_birth)
+
+1NF: remove alle repeated data
+projects(personel_no, personnel_name, personnel_birth, lab_code, personnel_no)
+research(research_id, reseach_desc, research_sup)
+
+2NF: remove partial dependencies
+projects(research_id, lab_code, personnel_no)
+lab (lab_code, lab_name)
+personnel (personel_no, personel_name, personel_birth)
+research(research_id, reseach_desc, research_sup)
+
+3NF: remove transitive dependencies
+projects(research_id, lab_code, personnel_no)
+lab (lab_code, lab_name)
+personnel (personel_no, personel_name, personel_birth)
+research(research_id, reseach_desc, research_sup)
