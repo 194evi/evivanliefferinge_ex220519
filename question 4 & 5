@@ -1,0 +1,34 @@
+mysql > create database exam;
+$mysql exam < Downloads/bioinf_examen.sql
+mysql> use exam;
+mysql> show tables;
+mysql> show coloms from exon 
+mysql> show coloms from exon_transcript
+mysql> show coloms from gene
+mysql> show coloms from transcript
+
+question 4
+mysql> select gene.gene_name, sum(seq_region_end-seq_region_start+1) as length from gene group by gene.gene_id order by length limit 1;
++-----------+--------+
+| gene_name | length |
++-----------+--------+
+| TRDD1     |      8 |
++-----------+--------+
+
+question 5 a
+mysql> select chromosome, count(*) as amount from gene where description like '%cancer%' group by chromosome order by amount desc limit 1 offset 1;
++------------+--------+
+| chromosome | amount |
++------------+--------+
+| 9          |      5 |
++------------+--------+
+
+question 5 b
+mysql> select count(*) from gene join transcript on transcript.gene_id = gene.gene_id join exon_transcript on transcript.transcript_id = exon_transcript.transcript_id join exon on exon.exon_id = exon_transcript.exon_id where chromosome like '9';
++----------+
+| count(*) |
++----------+
+|    45679 |
++----------+
+
+
